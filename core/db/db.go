@@ -3,6 +3,8 @@ import (
 	"github.com/alexander-beaver/user-ee/core/struct"
 
 	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/sqlite"
+
 )
 
 var dbName = "test.db"
