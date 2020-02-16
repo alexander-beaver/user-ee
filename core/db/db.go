@@ -1,4 +1,4 @@
-package core
+package db
 import (
 	"github.com/jinzhu/gorm"
 	"time"
@@ -15,16 +15,20 @@ type Error struct{
 	Time time.Time
 }
 
-
-func writeErrorToDB(reported Error){
-
+func SetupDatabase() *gorm.DB {
 	db, err := gorm.Open("sqlite3", dbName)
 	if err != nil {
 		panic("failed to connect database")
 	}
-	defer db.Close()
+	db.Set("gorm:auto_preload", true)
 
-	db.Create(reported)
+	return db
+}
+
+
+func writeErrorToDB(reported Error){
+
+
 
 }
 
