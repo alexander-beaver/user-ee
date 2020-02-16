@@ -34,6 +34,6 @@ func GetEntryFromDBGivenID(db *gorm.DB, id uint16) _struct.Error {
 
 
 
-	db.Where("name = ?", id).Find(&entry)
+	db.Where("ErrorID = ?", id).Find(&entry)
 	return entry
 }
