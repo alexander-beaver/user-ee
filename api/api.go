@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
-func putAPIErrorHandler(w http.ResponseWriter, r *http.Request){
+// Handles a PUT call to the API for an Error
+func PutErrorAPIHandler(w http.ResponseWriter, r *http.Request){
  fmt.Fprintf(w,"Test")
 }

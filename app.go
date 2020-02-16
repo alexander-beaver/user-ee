@@ -12,7 +12,7 @@ import (
 
 
 func main() {
-	http.HandleFunc("/", putAPIErrorHandler)
+	http.HandleFunc("/", )
 
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
