@@ -22,7 +22,6 @@ func main() {
 
 	//fmt.Println(json.Marshal(db.GetEntryFromDBGivenID(sqlite, 0)))
 
-	db.GetAllEntriesFromDB(sqlite)
 	http.HandleFunc("/",api.PutErrorAPIHandler)
 
 	log.Fatal(http.ListenAndServe(":8080", nil))

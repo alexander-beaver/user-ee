@@ -1,11 +1,12 @@
 package db
+
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/alexander-beaver/user-ee/core/struct"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
-
 )
 
 var dbName = "test.db"
@@ -43,6 +44,6 @@ func GetEntryFromDBGivenID(db *gorm.DB, id uint16) _struct.Error {
 func GetAllEntriesFromDB(db *gorm.DB) []_struct.Error{
 	var errors []_struct.Error
 	db.Find(&errors)
-	fmt.Println("{}", errors)
+	fmt.Println(json.Marshal(errors))
 	return errors
 }
