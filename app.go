@@ -8,9 +8,6 @@ import (
 )
 
 
-
-
-
 func main() {
 	db := db.SetupDatabase()
 	http.HandleFunc("/",api.PutErrorAPIHandler)

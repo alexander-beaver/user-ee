@@ -3,7 +3,6 @@ import (
 	"github.com/alexander-beaver/user-ee/core/struct"
 
 	"github.com/jinzhu/gorm"
-	"time"
 )
 
 var dbName = "test.db"
@@ -21,7 +20,8 @@ func SetupDatabase() *gorm.DB {
 
 
 func WriteErrorToDB(db *gorm.DB, reported _struct.Error){
-	db.Create(reported)
+
+
 
 
 }
