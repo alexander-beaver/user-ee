@@ -1,10 +1,10 @@
 package main
 
 import (
+
 	"log"
 	"net/http"
 	"github.com/alexander-beaver/user-ee/api"
-
 )
 
 
@@ -12,7 +12,7 @@ import (
 
 
 func main() {
-	http.HandleFunc("/", )
+	http.HandleFunc("/",api.PutErrorAPIHandler)
 
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }

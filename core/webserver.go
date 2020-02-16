@@ -1,4 +1,4 @@
-package main
+package core
 
 type Response struct{
 	Status uint16
