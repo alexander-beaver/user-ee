@@ -13,6 +13,7 @@ func SetupDatabase() *gorm.DB {
 	if err != nil {
 		panic("failed to connect database")
 	}
+	db.AutoMigrate(&_struct.Error{})
 	db.Set("gorm:auto_preload", true)
 
 	return db
