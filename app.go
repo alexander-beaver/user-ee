@@ -2,13 +2,21 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/alexander-beaver/user-ee/api"
+	"github.com/alexander-beaver/user-ee/core"
 	"github.com/alexander-beaver/user-ee/core/db"
+	"github.com/jinzhu/gorm"
 	"log"
 	"net/http"
 )
 
+func WriteJSONDB(db2 *gorm.DB) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request){
+		res, _ := json.Marshal(db.GetAllEntriesFromDB(db2))
+		core.RespondOK(w, r, res)
+	}
+
+}
 
 func main() {
 	sqlite := db.SetupDatabase()
@@ -22,9 +30,9 @@ func main() {
 	})*/
 
 	//fmt.Println(json.Marshal(db.GetEntryFromDBGivenID(sqlite, 0)))
-	res, _ := json.Marshal(db.GetAllEntriesFromDB(sqlite))
-	fmt.Println(string(res))
+
 	http.HandleFunc("/",api.PutErrorAPIHandler)
+	http.HandleFunc("/db",WriteJSONDB(sqlite))
 
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
