@@ -24,7 +24,7 @@ func SetupDatabase() *gorm.DB {
 
 
 func WriteErrorToDB(db *gorm.DB, reported _struct.Error){
-	db.Create(reported)
+	db.Create(&reported)
 	fmt.Println("Created Object")
 
 
