@@ -1,12 +1,10 @@
 package main
 
 import (
-
+	"github.com/alexander-beaver/user-ee/api"
+	"github.com/alexander-beaver/user-ee/core/db"
 	"log"
 	"net/http"
-	"github.com/alexander-beaver/user-ee/api"
-	"github.com/alexander-beaver/user-ee/core"
-
 )
 
 
@@ -14,7 +12,7 @@ import (
 
 
 func main() {
-	db := core.SetupDatabase()
+	db := db.SetupDatabase()
 	http.HandleFunc("/",api.PutErrorAPIHandler)
 
 	log.Fatal(http.ListenAndServe(":8080", nil))

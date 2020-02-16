@@ -1,19 +1,13 @@
 package db
 import (
+	"github.com/alexander-beaver/user-ee/core/struct"
+
 	"github.com/jinzhu/gorm"
 	"time"
 )
 
 var dbName = "test.db"
-type Error struct{
-	gorm.Model
 
-	EndpointID string
-	ErrorID uint16
-	ErrorMessage string
-	Comments string
-	Time time.Time
-}
 
 func SetupDatabase() *gorm.DB {
 	db, err := gorm.Open("sqlite3", dbName)
