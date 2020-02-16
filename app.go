@@ -3,10 +3,16 @@ package main
 import (
 	"log"
 	"net/http"
-	"./contexts/api"
+	"github.com/alexander-beaver/user-ee/api"
+
 )
 
+
+
+
+
 func main() {
-	http.HandleFunc("/", )
+	http.HandleFunc("/", putAPIErrorHandler)
+
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
