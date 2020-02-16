@@ -13,7 +13,7 @@ var dbName = "test.db"
 func SetupDatabase() *gorm.DB {
 	db, err := gorm.Open("sqlite3", dbName)
 	if err != nil {
-		panic("failed to connect database")
+		panic(err)
 	}
 	db.AutoMigrate(&_struct.Error{})
 	db.Set("gorm:auto_preload", true)
