@@ -42,7 +42,7 @@ func GetEntryFromDBGivenID(db *gorm.DB, id uint16) _struct.Error {
 
 func GetAllEntriesFromDB(db *gorm.DB) []_struct.Error{
 	var errors []_struct.Error
-	db.Find(errors)
+	db.Find(&errors)
 	fmt.Println("{}", errors)
 	return errors
 }
