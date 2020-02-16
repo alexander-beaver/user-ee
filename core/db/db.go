@@ -1,5 +1,6 @@
 package db
 import (
+	"fmt"
 	"github.com/alexander-beaver/user-ee/core/struct"
 
 	"github.com/jinzhu/gorm"
@@ -23,7 +24,8 @@ func SetupDatabase() *gorm.DB {
 
 
 func WriteErrorToDB(db *gorm.DB, reported _struct.Error){
-
+	db.Create(reported)
+	fmt.Println("Created Object")
 
 
 
