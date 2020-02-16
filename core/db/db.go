@@ -39,3 +39,10 @@ func GetEntryFromDBGivenID(db *gorm.DB, id uint16) _struct.Error {
 	db.Where("ErrorID = ?", id).Find(&entry)
 	return entry
 }
+
+func GetAllEntriesFromDB(db *gorm.DB) []_struct.Error{
+	var errors []_struct.Error
+	db.Find(errors)
+	fmt.Println("{}", errors)
+	return errors
+}
