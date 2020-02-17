@@ -23,8 +23,8 @@ func PutErrorAPIHandler(db2 *gorm.DB) func(w http.ResponseWriter, r *http.Reques
 	return func(w http.ResponseWriter, r *http.Request) {
 
 		decoder := json.NewDecoder(r.Body)
-		var e = BodyJSON{}
-		err := decoder.Decode(e)
+		var e BodyJSON
+		err := decoder.Decode(&e)
 		if err != nil {
 			panic(err)
 		}
