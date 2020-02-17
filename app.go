@@ -11,6 +11,7 @@ import (
 
 func WriteJSONDB(db2 *gorm.DB) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
+
 		res := db.GetAllEntriesFromDB(db2)
 		core.RespondOK(w, r, res)
 	}
