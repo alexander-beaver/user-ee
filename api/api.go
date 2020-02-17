@@ -26,6 +26,7 @@ func PutErrorAPIHandler(db2 *gorm.DB) func(w http.ResponseWriter, r *http.Reques
 		var e BodyJSON
 		err := decoder.Decode(&e)
 		if err != nil {
+			core.RespondInternalServerError(w, r, err)
 			panic(err)
 		}
 		writeStruct := _struct.Error{
