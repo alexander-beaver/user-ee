@@ -30,9 +30,8 @@ func main() {
 
 	//fmt.Println(json.Marshal(db.GetEntryFromDBGivenID(sqlite, 0)))
 
-	http.HandleFunc("/", api.PutErrorAPIHandler)
+	http.HandleFunc("/write", api.PutErrorAPIHandler(sqlite))
 	http.HandleFunc("/db", WriteJSONDB(sqlite))
-	http.HandleFunc("/write", WriteJSONDB(sqlite))
 
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
