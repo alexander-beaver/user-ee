@@ -11,6 +11,17 @@ import (
 	"net/http"
 )
 
+// The body that is expected in a JSON request
+// An example request is:
+//curl --request POST \
+//  --url http://localhost:8080/write \
+//  --header 'content-type: application/json' \
+//  --data '{
+//      "EndpointID": "123",
+//	"ErrorID": 100,
+//	"ErrorMessage": "Test",
+//	"Comments": "Test"
+//}'
 type BodyJSON struct {
 	EndpointID   string
 	ErrorID      uint16
@@ -19,6 +30,7 @@ type BodyJSON struct {
 }
 
 // Handles a PUT call to the API for an Error
+// Endpoint: http://localhost:8080/write
 func PutErrorAPIHandler(db2 *gorm.DB) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 

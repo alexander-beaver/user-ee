@@ -9,7 +9,9 @@ import (
 	"net/http"
 )
 
-func WriteJSONDB(db2 *gorm.DB) func(w http.ResponseWriter, r *http.Request) {
+// Returns all entries in the database
+// The result will be sent back in the HTTP body
+func GetAll(db2 *gorm.DB) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 
 		res := db.GetAllEntriesFromDB(db2)
@@ -18,6 +20,8 @@ func WriteJSONDB(db2 *gorm.DB) func(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// Runs the server
+// This is the entrypoint for the application
 func main() {
 	sqlite := db.SetupDatabase()
 	/*
@@ -32,7 +36,7 @@ func main() {
 	//fmt.Println(json.Marshal(db.GetEntryFromDBGivenID(sqlite, 0)))
 
 	http.HandleFunc("/write", api.PutErrorAPIHandler(sqlite))
-	http.HandleFunc("/db", WriteJSONDB(sqlite))
+	http.HandleFunc("/db", GetAll(sqlite))
 
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }

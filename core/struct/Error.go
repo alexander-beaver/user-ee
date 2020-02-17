@@ -4,6 +4,7 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
+// Specification for an error entry
 type Error struct {
 	gorm.Model
 

@@ -9,8 +9,10 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
 
+// The file that will be used for the sqlite3 database
 var dbName = "test.db"
 
+// Initializes the GORM database
 func SetupDatabase() *gorm.DB {
 	db, err := gorm.Open("sqlite3", dbName)
 	if err != nil {
@@ -22,6 +24,7 @@ func SetupDatabase() *gorm.DB {
 	return db
 }
 
+// Write a new entry to the error database
 func WriteErrorToDB(db *gorm.DB, reported _struct.Error) {
 
 	db.Create(&reported)
@@ -29,6 +32,7 @@ func WriteErrorToDB(db *gorm.DB, reported _struct.Error) {
 
 }
 
+// Gets an entry from the database given an ID
 func GetEntryFromDBGivenID(db *gorm.DB, id uint16) _struct.Error {
 	var entry _struct.Error
 
@@ -36,6 +40,7 @@ func GetEntryFromDBGivenID(db *gorm.DB, id uint16) _struct.Error {
 	return entry
 }
 
+// Gets all entries from the database
 func GetAllEntriesFromDB(db *gorm.DB) []_struct.Error {
 	var errors []_struct.Error
 	db.Find(&errors)
