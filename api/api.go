@@ -14,8 +14,8 @@ import (
 // The body that is expected in a JSON request
 // An example request is:
 //
-//`
-//curl --request POST \
+//
+//	curl --request POST \
 //  --url http://localhost:8080/write \
 //  --header 'content-type: application/json' \
 //  --data '{
@@ -23,7 +23,7 @@ import (
 //	"ErrorID": 100,
 //	"ErrorMessage": "Test",
 //	"Comments": "Test"
-//}'`
+//	}'
 type BodyJSON struct {
 	EndpointID   string
 	ErrorID      uint16
