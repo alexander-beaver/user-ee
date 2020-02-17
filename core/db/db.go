@@ -11,7 +11,6 @@ import (
 
 var dbName = "test.db"
 
-
 func SetupDatabase() *gorm.DB {
 	db, err := gorm.Open("sqlite3", dbName)
 	if err != nil {
@@ -23,25 +22,21 @@ func SetupDatabase() *gorm.DB {
 	return db
 }
 
+func WriteErrorToDB(db *gorm.DB, reported _struct.Error) {
 
-func WriteErrorToDB(db *gorm.DB, reported _struct.Error){
 	db.Create(&reported)
 	fmt.Println("Created Object")
-
-
 
 }
 
 func GetEntryFromDBGivenID(db *gorm.DB, id uint16) _struct.Error {
 	var entry _struct.Error
 
-
-
 	db.Where("ErrorID = ?", id).Find(&entry)
 	return entry
 }
 
-func GetAllEntriesFromDB(db *gorm.DB) []_struct.Error{
+func GetAllEntriesFromDB(db *gorm.DB) []_struct.Error {
 	var errors []_struct.Error
 	db.Find(&errors)
 	fmt.Println(json.Marshal(errors))
